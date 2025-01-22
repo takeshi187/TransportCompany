@@ -1,0 +1,36 @@
+﻿<Window x:Class="TransportCompany.LogInWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TransportCompany"
+        mc:Ignorable="d"
+        Title="Авторизация" WindowState="Maximized" MinHeight="350" MinWidth="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="5" Background="Gray" Grid.Row="0">
+            <Label Margin="5" FontFamily="Calibri" FontSize="18" FontWeight="Bold">Логин:</Label>
+            <TextBox x:Name="TextBox_Login" Margin="10,0,10,0" Height="25" FontFamily="Calibri" FontSize="16"></TextBox>
+            <Label Margin="5" FontFamily="Calibri" FontSize="18" FontWeight="Bold">Пароль:</Label>
+            <PasswordBox x:Name="PassBox_Password" Margin="10,0,10,0" Height="25" FontFamily="Calibri" FontSize="16"/>
+
+            
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Btn_Enter" Grid.Column="0" Height="50" Width="100" Click="Btn_Enter_Click">Войти</Button>
+            <Button x:Name="Btn_Exit" Grid.Column="1" Height="50" Width="100" Click="Btn_Exit_Click">Выход</Button>
+            <Button x:Name="Btn_SignUp" Grid.Column="2" Height="50" Width="100" Click="Btn_SignUp_Click">Регистрация</Button>
+            <Button x:Name="Btn_Clear" Grid.Column="3" Height="50" Width="100" Click="Btn_Clear_Click">Очистить</Button>
+        </Grid>
+    </Grid>
+</Window>
