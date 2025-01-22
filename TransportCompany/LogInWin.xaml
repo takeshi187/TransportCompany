@@ -17,8 +17,6 @@
             <TextBox x:Name="TextBox_Login" Margin="10,0,10,0" Height="25" FontFamily="Calibri" FontSize="16"></TextBox>
             <Label Margin="5" FontFamily="Calibri" FontSize="18" FontWeight="Bold">Пароль:</Label>
             <PasswordBox x:Name="PassBox_Password" Margin="10,0,10,0" Height="25" FontFamily="Calibri" FontSize="16"/>
-
-            
         </StackPanel>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
