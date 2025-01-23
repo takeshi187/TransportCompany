@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using System.Windows;
 using TransportCompany.database;
 
-namespace TransportCompany
+namespace TransportCompany.Windows
 {
     public partial class LogInWin : Window
     {
