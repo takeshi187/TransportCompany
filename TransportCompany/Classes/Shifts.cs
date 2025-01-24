@@ -2,13 +2,13 @@
 {
     public class Shifts
     {
-        public int ShiftId { get; private set; }
-        public int EmployeeId { get; private set; }
-        public int RoadTrainId { get; private set; }
-        public int SupplyId { get; private set; }
-        public int RouteId { get; private set; }
-        public DateOnly StartDate { get; private set; }
-        public DateOnly EndDate { get; private set; }
-        public int Hours { get; private set; }
+        public long ShiftId { get; set; }
+        public long EmployeeId { get; set; }
+        public long RoadTrainId { get; set; }
+        public long SupplyId { get; set; }
+        public long RouteId { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int Hours { get; set; }
     }
 }

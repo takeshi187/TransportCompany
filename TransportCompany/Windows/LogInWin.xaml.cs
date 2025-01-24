@@ -1,5 +1,4 @@
 ﻿using System.Data.SqlClient;
-using System.Linq.Expressions;
 using System.Windows;
 using TransportCompany.database;
 
@@ -24,15 +23,15 @@ namespace TransportCompany.Windows
                 MessageBox.Show("Введите логин!");
             else if (userpassword == "")
                 MessageBox.Show("Введите пароль!");
-            else 
+            else
             {
                 // Если проверка прошла, делаем запрос к бд
-                string query = "SELECT LastName, PostId FROM Employees WHERE Login = @Login AND Password = @Password";
-                
+                string query = "SELECT EmployeeId, LastName, PostId FROM Employees WHERE Login = @Login AND Password = @Password";
+
                 // Открываем подключение
                 database.OpenConnection();
 
-                // Создаем команду и выполняем
+                // Создаем команду
                 SqlCommand command = new SqlCommand(query, database.GetConnection());
 
                 command.Parameters.AddWithValue("@Login", login);
@@ -42,12 +41,13 @@ namespace TransportCompany.Windows
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    string LastName = reader.GetString(0);
-                    long PostId = reader.GetInt64(1);
+                    long id = reader.GetInt64(0);
+                    string LastName = reader.GetString(1);
+                    long PostId = reader.GetInt64(2);
 
                     try
                     {
-                        switch(PostId)
+                        switch (PostId)
                         {
                             case 1:
                                 // to do
@@ -56,15 +56,18 @@ namespace TransportCompany.Windows
                                 // to do
                                 break;
                             case 3:
-                                // to do
-                                MessageBox.Show($"Добро пожаловать водитель: {LastName}!");
+                                //MessageBox.Show($"Добро пожаловать водитель: {LastName}!");
+                                DriverWin driverWin = new DriverWin();
+                                driverWin.SetUserInfo(id, LastName);
+                                driverWin.Show();
+                                this.Close();
                                 break;
                             default:
                                 MessageBox.Show("Некорректная должность пользователя!");
                                 break;
                         }
                     }
-                    catch (Exception ex) 
+                    catch (Exception ex)
                     {
                         MessageBox.Show("Ошибка авторизации:" + ex.Message);
                     }
