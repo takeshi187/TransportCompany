@@ -53,10 +53,13 @@ namespace TransportCompany.Windows
                                 // to do
                                 break;
                             case 2:
-                                // to do
+                                MessageBox.Show($"Добро пожаловать оператор: {LastName}!");
+                                OperatorWin operatorWin = new OperatorWin();
+                                operatorWin.Show();
+                                this.Close();
                                 break;
                             case 3:
-                                //MessageBox.Show($"Добро пожаловать водитель: {LastName}!");
+                                MessageBox.Show($"Добро пожаловать водитель: {LastName}!");
                                 DriverWin driverWin = new DriverWin();
                                 driverWin.SetUserInfo(id, LastName);
                                 driverWin.Show();

@@ -1,18 +1,18 @@
-﻿using System.Collections.ObjectModel;
-using System.Data.SqlClient;
-using System.Windows;
-using TransportCompany.Classes;
+﻿using System.Windows;
 using TransportCompany.database;
+using System.Data.SqlClient;
+using System.Collections.ObjectModel;
+using TransportCompany.Classes;
 
 namespace TransportCompany.Windows
 {
-    public partial class DriverWin : Window
+    public partial class OperatorWin : Window
     {
         // Создаем объект базы данных
         Database database = new Database();
         // Коллекция смен
         private ObservableCollection<Shifts> shifts = new ObservableCollection<Shifts>();
-        public DriverWin()
+        public OperatorWin()
         {
             InitializeComponent();
             // Заполнение datagrid коллекцией
@@ -36,12 +36,10 @@ namespace TransportCompany.Windows
                 database.OpenConnection();
 
                 // Запрос к базе
-                string query = "SELECT * FROM Shifts WHERE EmployeeId = @id";
+                string query = "SELECT * FROM Shifts";
 
                 // Создаем команду
                 SqlCommand command = new SqlCommand(query, database.GetConnection());
-
-                command.Parameters.AddWithValue("@id", TextBox_DriverId.Text.ToString());
 
                 // Выполняем команду
                 SqlDataReader reader = command.ExecuteReader();
@@ -74,15 +72,9 @@ namespace TransportCompany.Windows
             }
         }
 
-        public void SetUserInfo(long id, string lastname)
-        {
-            TextBox_DriverId.Text = id.ToString();
-            TextBox_LastName.Text = lastname;
-        }
-
         private void Btn_Exit_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+
         }
     }
 }
