@@ -1,8 +1,8 @@
-﻿using System.Windows;
-using TransportCompany.database;
+﻿using System.Collections.ObjectModel;
 using System.Data.SqlClient;
-using System.Collections.ObjectModel;
+using System.Windows;
 using TransportCompany.Classes;
+using TransportCompany.database;
 
 namespace TransportCompany.Windows
 {

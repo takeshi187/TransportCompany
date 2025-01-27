@@ -2,8 +2,8 @@
 {
     public class TransportsAndTrailers
     {
-        public int RoadTrainId { get; private set; }
-        public int TransportId { get; private set; }
-        public int TrailerId { get; private set; }
+        public long RoadTrainId { get; set; }
+        public long TransportId { get; set; }
+        public long? TrailerId { get; set; }
     }
 }

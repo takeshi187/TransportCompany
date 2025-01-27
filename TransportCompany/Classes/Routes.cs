@@ -2,8 +2,8 @@
 {
     public class Routes
     {
-        public int RouteId { get; private set; }
-        public string StartPoint { get; private set; }
-        public string EndPoint { get; private set; }
+        public long RouteId { get; set; }
+        public string StartPoint { get; set; }
+        public string EndPoint { get; set; }
     }
 }

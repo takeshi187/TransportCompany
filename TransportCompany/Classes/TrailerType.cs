@@ -2,7 +2,7 @@
 {
     public class TrailerType
     {
-        public int TrailerTypeId { get; private set; }
-        public string trailerType { get; private set; }
+        public long TrailerTypeId { get; set; }
+        public string trailerType { get; set; }
     }
 }

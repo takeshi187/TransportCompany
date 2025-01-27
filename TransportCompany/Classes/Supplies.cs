@@ -2,8 +2,8 @@
 {
     public class Supplies
     {
-        public int SupplyId { get; private set; }
-        public int SupplyTypeId { get; private set; }
-        public int SupplyWeight { get; private set; }
+        public long SupplyId { get; set; }
+        public long SupplyTypeId { get; set; }
+        public int SupplyWeight { get; set; }
     }
 }

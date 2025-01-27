@@ -2,7 +2,7 @@
 {
     public class Posts
     {
-        public int PostId { get; private set; }
-        public string PostName { get; private set; }
+        public long PostId { get; set; }
+        public string PostName { get; set; }
     }
 }

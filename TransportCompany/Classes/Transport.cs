@@ -2,9 +2,11 @@
 {
     public class Transport
     {
-        public int TransportId { get; private set; }
-        public string TransportNum { get; private set; }
-        public string TransportBrand { get; private set; }
-        public string TransportModel { get; private set; }
+        public long TransportId { get; set; }
+        public string TransportNum { get; set; }
+        public string TransportBrand { get; set; }
+        public string TransportModel { get; set; }
+
+        public int Carrying {  get; set; }
     }
 }

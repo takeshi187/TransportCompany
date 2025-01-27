@@ -2,13 +2,15 @@
 {
     public class Employees
     {
-        public int EmployeeId { get; private set; }
-        public int PostId { get; private set; }
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-        public string? MiddleName { get; private set; }
-        public DateOnly DateOfBirth { get; private set; }
-        public int Phone { get; private set; }
-        public string Email { get; private set; }
+        public long EmployeeId { get; set; }
+        public long PostId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string? MiddleName { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
     }
 }
