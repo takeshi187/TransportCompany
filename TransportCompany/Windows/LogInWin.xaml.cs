@@ -6,6 +6,7 @@ namespace TransportCompany.Windows
 {
     public partial class LogInWin : Window
     {
+        // Создаем объект базы данных
         Database database = new Database();
         public LogInWin()
         {
@@ -50,7 +51,10 @@ namespace TransportCompany.Windows
                         switch (PostId)
                         {
                             case 1:
-                                // to do
+                                MessageBox.Show($"Добро пожаловать администратор: {LastName}!");
+                                AdminWin adminWin = new AdminWin();
+                                adminWin.Show();
+                                this.Close();
                                 break;
                             case 2:
                                 MessageBox.Show($"Добро пожаловать оператор: {LastName}!");

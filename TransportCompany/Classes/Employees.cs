@@ -3,6 +3,7 @@
     public class Employees
     {
         public long EmployeeId { get; set; }
+        public long StatusId { get; set; }
         public long PostId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

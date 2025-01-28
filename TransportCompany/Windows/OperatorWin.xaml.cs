@@ -74,7 +74,7 @@ namespace TransportCompany.Windows
 
         private void Btn_Exit_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }
