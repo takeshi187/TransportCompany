@@ -28,7 +28,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Background="LightGray">
-            <Button x:Name="Btn_Back" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Content="Выход" Width="150" Height="50" Margin="5" Click="Btn_Back_Click"/>
+            <Button x:Name="Btn_Back" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Content="Назад" Width="150" Height="50" Margin="5" Click="Btn_Back_Click"/>
             <Button x:Name="Btn_Edit" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Content="Редактировать" Width="150" Height="50" Margin="5" Click="Btn_Edit_Click"/>
         </StackPanel>
 
