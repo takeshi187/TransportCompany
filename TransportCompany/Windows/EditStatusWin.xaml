@@ -22,7 +22,7 @@
         </StackPanel>
         
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="5" Background="Wheat">
-            <ComboBox x:Name="ComboBox_EmployeeId" Margin="20" DisplayMemberPath="LastName"/>
+            <ComboBox x:Name="ComboBox_EmployeeId" Margin="20" DisplayMemberPath="EmployeeId"/>
             <ComboBox x:Name="ComboBox_EmployeeStatus" Margin="20" DisplayMemberPath="Status"/>
             <ComboBox x:Name="ComboBox_EmployeePost" Margin="20" DisplayMemberPath="PostName"/>
         </StackPanel>

@@ -36,7 +36,7 @@ namespace TransportCompany.Windows
                 database.OpenConnection();
 
                 // Запрос к базе
-                string query = "SELECT * FROM Employees";
+                string query = "SELECT * FROM Employees WHERE PostId = 2 OR PostId = 3";
 
                 // Создаем команду
                 SqlCommand command = new SqlCommand(query, database.GetConnection());
@@ -133,7 +133,7 @@ namespace TransportCompany.Windows
                 database.OpenConnection();
 
                 // Запрос к базе
-                string query = "SELECT * FROM Posts";
+                string query = "SELECT * FROM Posts WHERE PostId = 2 OR PostId = 3";
 
                 // Создаем команду
                 SqlCommand command = new SqlCommand(query, database.GetConnection());
@@ -172,17 +172,37 @@ namespace TransportCompany.Windows
             adminWin.Show();
             this.Close();
         }
-        // to do
-        private int GetPost(int post)
+        private long GetStatus(long status)
         {
+            if (ComboBox_EmployeeStatus.Text == "Заблокирован")
+            {
+                return status = 2;
+            }
+            if (ComboBox_EmployeeStatus.Text == "В системе")
+            {
+                return status = 1;
+            }
+            return 0;
+        }
+
+        private long GetPost(long role)
+        {
+            if (ComboBox_EmployeePost.Text == "Оператор")
+            {
+                return role = 2;
+            }
+            if (ComboBox_EmployeePost.Text == "Водитель")
+            {
+                return role = 3;
+            }
             return 0;
         }
 
         private void Btn_Edit_Click(object sender, RoutedEventArgs e)
         {
-            int status = 0;
-            int post = 0;
-            //status = GetStatus(status);
+            long status = 0;
+            long post = 0;
+            status = GetStatus(status);
             post = GetPost(post);
             try
             {
@@ -198,9 +218,9 @@ namespace TransportCompany.Windows
 
                     SqlCommand command = new SqlCommand(query, database.GetConnection());
 
-                    command.Parameters.AddWithValue("@status", ComboBox_EmployeeStatus.Text.ToString());
-                    command.Parameters.AddWithValue("@post", ComboBox_EmployeePost.Text.ToString());
-                    command.Parameters.AddWithValue("@employeeid", ComboBox_EmployeeId.Text.ToString());
+                    command.Parameters.AddWithValue("@status", status);
+                    command.Parameters.AddWithValue("@post", post);
+                    command.Parameters.AddWithValue("@employeeid", Convert.ToInt64(ComboBox_EmployeeId.Text));
 
                     command.ExecuteNonQuery();
 
