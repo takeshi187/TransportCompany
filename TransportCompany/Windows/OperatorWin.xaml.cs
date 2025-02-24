@@ -56,7 +56,8 @@ namespace TransportCompany.Windows
                         RouteId = Convert.ToInt64(reader["RouteId"]),
                         StartDate = Convert.ToDateTime(reader["StartDate"]),
                         EndDate = Convert.ToDateTime(reader["EndDate"]),
-                        Hours = Convert.ToInt32(reader["Hours"])
+                        Hours = Convert.ToInt32(reader["Hours"]),
+                        Distance = Convert.ToInt32(reader["Distance"])
                     };
                     // Заносим данные в коллекцию
                     shifts.Add(shift);
@@ -64,7 +65,7 @@ namespace TransportCompany.Windows
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка при загрузке смен: {ex.Message}");
+                MessageBox.Show($"Ошибка при загрузке смен: {ex.Message}");
             }
             finally
             {
@@ -74,6 +75,13 @@ namespace TransportCompany.Windows
 
         private void Btn_Exit_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+
+        private void Btn_Calculate_Salary_Click(object sender, RoutedEventArgs e)
+        {
+            CalculateSalaryWin calculateSalaryWin = new CalculateSalaryWin();
+            calculateSalaryWin.Show();
             this.Close();
         }
     }

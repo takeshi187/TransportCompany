@@ -1,0 +1,30 @@
+﻿<Window x:Class="TransportCompany.Windows.CalculateSalaryWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TransportCompany.Windows"
+        mc:Ignorable="d"
+        Title="Расчет зарплаты" Height="300" Width="350" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Background="LightGray" Margin="5">
+            <Label>Id сотрудника</Label>
+            <ComboBox x:Name="ComboBox_EmployeeId" Margin="5" DisplayMemberPath="EmployeeId"/>
+            <Label>Ставка за км</Label>
+            <TextBox x:Name="TextBox_Rate_Per_Km" Margin="5"/>
+            <Label>Ставка за час</Label>
+            <TextBox x:Name="TextBox_Hourly_Rate" Margin="5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Background="LightGray" Orientation="Horizontal" Margin="5">
+            <Button x:Name="Btn_Calculate_Salary" VerticalAlignment="Center" Content="Рассчет" Width="150" Height="50" Margin="5" Click="Btn_Calculate_Salary_Click"/>
+            <Button x:Name="Btn_Back" VerticalAlignment="Center" Content="Назад" Width="150" Height="50" Margin="5" Click="Btn_Back_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,8 +1,8 @@
-﻿using System.Windows;
-using TransportCompany.database;
+﻿using System.Collections.ObjectModel;
 using System.Data.SqlClient;
-using System.Collections.ObjectModel;
+using System.Windows;
 using TransportCompany.Classes;
+using TransportCompany.database;
 
 namespace TransportCompany.Windows
 {
@@ -64,18 +64,18 @@ namespace TransportCompany.Windows
                     // Заносим данные в коллекцию
                     employees.Add(employee);
                 }
-                
+
                 // Загрузка данных в combobox
                 ComboBox_EmployeeId.ItemsSource = employees;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка при загрузке сотрудников: {ex.Message}");
+                MessageBox.Show($"Ошибка при загрузке сотрудников: {ex.Message}");
             }
             finally
             {
                 database.CloseConnection();
-            }       
+            }
         }
 
         private void LoadComboBox_EmployeeStatus()
@@ -103,7 +103,7 @@ namespace TransportCompany.Windows
                     Statuses status = new Statuses()
                     {
                         StatusId = Convert.ToInt64(reader["StatusId"]),
-                        Status = Convert.ToString(reader["Status"])                    
+                        Status = Convert.ToString(reader["Status"])
                     };
                     // Заносим данные в коллекцию
                     statuses.Add(status);
@@ -114,7 +114,7 @@ namespace TransportCompany.Windows
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка при загрузке статусов: {ex.Message}");
+                MessageBox.Show($"Ошибка при загрузке статусов: {ex.Message}");
             }
             finally
             {
@@ -158,7 +158,7 @@ namespace TransportCompany.Windows
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка при загрузке должности: {ex.Message}");
+                MessageBox.Show($"Ошибка при загрузке должности: {ex.Message}");
             }
             finally
             {
@@ -206,7 +206,7 @@ namespace TransportCompany.Windows
             post = GetPost(post);
             try
             {
-                if(post == 0)
+                if (post == 0)
                 {
                     MessageBox.Show("Не удалось обновить статус");
                 }
@@ -227,7 +227,7 @@ namespace TransportCompany.Windows
                     MessageBox.Show("Статус успешно изменен!");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Не удалось обновить статус: " + ex.Message);
             }
