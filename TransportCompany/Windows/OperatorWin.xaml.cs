@@ -78,10 +78,17 @@ namespace TransportCompany.Windows
             this.Close();
         }
 
-        private void Btn_Calculate_Salary_Click(object sender, RoutedEventArgs e)
+        private void Btn_Calculate_Salary_Per_Km_Click(object sender, RoutedEventArgs e)
         {
-            CalculateSalaryWin calculateSalaryWin = new CalculateSalaryWin();
-            calculateSalaryWin.Show();
+            CalculateSalaryPerKmWin calculateSalaryPerKmWin = new CalculateSalaryPerKmWin();
+            calculateSalaryPerKmWin.Show();
+            this.Close();
+        }
+
+        private void Btn_Calculate_Salary_Per_Hour_Click(object sender, RoutedEventArgs e)
+        {
+            CalculateSalaryPerHourWin calculateSalaryPerHourWin = new CalculateSalaryPerHourWin();
+            calculateSalaryPerHourWin.Show();
             this.Close();
         }
     }

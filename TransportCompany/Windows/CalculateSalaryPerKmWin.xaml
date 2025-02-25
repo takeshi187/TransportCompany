@@ -1,11 +1,11 @@
-﻿<Window x:Class="TransportCompany.Windows.CalculateSalaryWin"
+﻿<Window x:Class="TransportCompany.Windows.CalculateSalaryPerKmWin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportCompany.Windows"
         mc:Ignorable="d"
-        Title="Расчет зарплаты" Height="300" Width="350" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
+        Title="Расчет зарплаты по км" Height="300" Width="350" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -14,12 +14,11 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Background="LightGray" Margin="5">
+            <Label FontSize="18" HorizontalAlignment="Center">Расчет по км</Label>
             <Label>Id сотрудника</Label>
             <ComboBox x:Name="ComboBox_EmployeeId" Margin="5" DisplayMemberPath="EmployeeId"/>
             <Label>Ставка за км</Label>
             <TextBox x:Name="TextBox_Rate_Per_Km" Margin="5"/>
-            <Label>Ставка за час</Label>
-            <TextBox x:Name="TextBox_Hourly_Rate" Margin="5"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Background="LightGray" Orientation="Horizontal" Margin="5">

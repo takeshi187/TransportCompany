@@ -1,19 +1,19 @@
 ﻿using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 using System.Windows;
 using TransportCompany.Classes;
 using TransportCompany.database;
-using System.Data.SqlClient;
 
 namespace TransportCompany.Windows
 {
 
-    public partial class CalculateSalaryWin : Window
+    public partial class CalculateSalaryPerKmWin : Window
     {
         // Создаем объект базы данных
         Database database = new Database();
         // Создаем коллекцию водителей
         private ObservableCollection<Employees> employees = new ObservableCollection<Employees>();
-        public CalculateSalaryWin()
+        public CalculateSalaryPerKmWin()
         {
             InitializeComponent();
         }
@@ -90,9 +90,8 @@ namespace TransportCompany.Windows
             try
             {
                 // Задаем значения
-                int empId = int.Parse(ComboBox_EmployeeId.Text);
+                long empId = int.Parse(ComboBox_EmployeeId.Text);
                 decimal ratePerKm = decimal.Parse(TextBox_Rate_Per_Km.Text);
-                decimal hourlyRate = decimal.Parse(TextBox_Hourly_Rate.Text);
 
                 decimal totalSalary = 0;
 
@@ -100,7 +99,7 @@ namespace TransportCompany.Windows
                 database.OpenConnection();
 
                 // Создаем запрос
-                string query = "SELECT Distance, Hours, FROM Shifts WHERE EmployeeId = @EmployeeId AND StartDate >= DATEADD(MONTH, -1, GETDATE())";
+                string query = "SELECT Distance FROM Shifts WHERE EmployeeId = @EmployeeId AND StartDate >= DATEADD(MONTH, -1, GETDATE())";
 
                 // Создаем команду
                 SqlCommand command = new SqlCommand(query, database.GetConnection());
@@ -108,17 +107,17 @@ namespace TransportCompany.Windows
 
                 // Создаем чтение запроса
                 SqlDataReader reader = command.ExecuteReader();
-                while(reader.Read())
+                while (reader.Read())
                 {
-                    decimal distance = reader.GetDecimal(0);
-                    decimal hours = reader.GetDecimal(1);
+                    int distance = reader.GetInt32(0);
 
                     // Рассчитываем зарплату для каждой смены
-                    totalSalary += (distance * ratePerKm) + (hours * hourlyRate);
+                    totalSalary += (distance * ratePerKm);
                 }
+                reader.Close();
 
                 // Вставляем расчет в таблицу выплат
-                string insertquery = "INSERT INTO Salary (EmployeeId, Count, Date) VALUES (@EmployeeId, @Count, GETDATE())";
+                string insertquery = "INSERT INTO Salary (EmployeeId, Count, Date, SalaryTypeId) VALUES (@EmployeeId, @Count, GETDATE(), 1)";
 
                 // Создаем команду
                 SqlCommand insertCommand = new SqlCommand(insertquery, database.GetConnection());

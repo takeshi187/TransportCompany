@@ -6,5 +6,6 @@
         public long EmployeeId { get; set; }
         public decimal Count { get; set; }
         public DateTime Date { get; set; }
+        public long SalaryTypeId { get; set; }
     }
 }
