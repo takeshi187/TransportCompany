@@ -162,5 +162,12 @@ namespace TransportCompany.Windows
                 MessageBox.Show("Ошибка при удалении профиля: " + ex.Message);
             }
         }
+
+        private void Btn_AddUser_Click(object sender, RoutedEventArgs e)
+        {
+            UserAddWin userAddWin = new UserAddWin();
+            userAddWin.Show();
+            this.Close();
+        }
     }
 }

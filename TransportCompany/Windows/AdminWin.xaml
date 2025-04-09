@@ -25,6 +25,7 @@
             <Button x:Name="Btn_Exit" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Content="Выход" Width="150" Height="50" Margin="5" Click="Btn_Exit_Click"/>
             <Button x:Name="Btn_Edit" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Content="Редактировать" Width="150" Height="50" Margin="5" Click="Btn_Edit_Click"/>
             <Button x:Name="Btn_Delete" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Content="Удалить" Width="150" Height="50" Margin="5" Click="Btn_Delete_Click"/>
+            <Button x:Name="Btn_AddUser" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Content="Зарегистрировать" Width="150" Height="50" Margin="5" Click="Btn_AddUser_Click"/>
         </StackPanel>
 
         <DataGrid x:Name="DGEmployees" Margin="10" Grid.Column="1" Grid.Row="1" AutoGenerateColumns="True" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False"/>
