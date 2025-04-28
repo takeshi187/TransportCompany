@@ -11,7 +11,7 @@ namespace TransportCompany.Windows
         // Создаем объект базы данных
         Database database = new Database();
         // Коллекция смен    
-        List<EmployeeDisplay> employeesDisplay = new List<EmployeeDisplay>();
+        private ObservableCollection<EmployeeDisplay> employeesDisplay = new ObservableCollection<EmployeeDisplay>();
         public AdminWin()
         {
             InitializeComponent();
@@ -97,6 +97,30 @@ namespace TransportCompany.Windows
                     //Открываем подключение к бд
                     database.OpenConnection();
 
+                    // Запрос на удаление по shift
+                    string queryShift = "DELETE FROM Shifts WHERE EmployeeId = @Id";
+
+                    // Создаем команду
+                    SqlCommand commandShift = new SqlCommand(queryShift, database.GetConnection());
+
+                    // Передаем параметры
+                    commandShift.Parameters.AddWithValue("@id", Id);
+
+                    // Выполняем команду
+                    commandShift.ExecuteNonQuery();
+
+                    // Запрос на удаление по salary
+                    string querySalary = "DELETE FROM Salary WHERE EmployeeId = @Id";
+                    
+                    // Создаем команду
+                    SqlCommand commandSalary = new SqlCommand(querySalary, database.GetConnection());
+
+                    // Передаем параметры
+                    commandSalary.Parameters.AddWithValue("@id", Id);
+
+                    // Выполняем команду
+                    commandSalary.ExecuteNonQuery();
+
                     // Запрос на удаление по id
                     string query = "DELETE FROM Employees WHERE EmployeeId = @id";
 
@@ -133,7 +157,7 @@ namespace TransportCompany.Windows
             try
             {
                 // Проверяем, является ли выбранная строка Employees
-                Employees selectedEmployee = DGEmployees.SelectedItem as Employees;
+                EmployeeDisplay selectedEmployee = DGEmployees.SelectedItem as EmployeeDisplay;
                 if (selectedEmployee == null)
                 {
                     MessageBox.Show("Выберите профиль для удаления.", "Внимание");
