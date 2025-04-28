@@ -10,34 +10,32 @@ namespace TransportCompany.Windows
     {
         // Создаем объект базы данных
         Database database = new Database();
-        // Коллекция смен
-        private ObservableCollection<Employees> employees = new ObservableCollection<Employees>();
+        // Коллекция смен    
+        List<EmployeeDisplay> employeesDisplay = new List<EmployeeDisplay>();
         public AdminWin()
         {
             InitializeComponent();
-            // Заполнение datagrid коллекцией
-            DGEmployees.ItemsSource = employees;
+            // Заносим данные в коллекцию
+            DGEmployees.ItemsSource = employeesDisplay;
         }
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // Вызываем функцию загрузки смен
             LoadEmployees();
         }
-
+       
         private void LoadEmployees()
         {
             try
             {
-                // Очищаем содержимое коллекции
-                employees.Clear();
-
+                employeesDisplay.Clear();
                 // Открываем подключение
                 database.OpenConnection();
 
                 // Запрос к базе
-                string query = "SELECT * FROM Employees";
-
+                string query = "SELECT e.EmployeeId, e.FirstName, e.LastName, e.MiddleName, p.PostName AS PostName, s.Status AS Status, e.Phone, e.DateOfBirth, e.Email, e.Login, e.Password FROM Employees e INNER JOIN Posts p ON e.PostId = p.PostId INNER JOIN Statuses s ON e.StatusId = s.StatusId";
                 // Создаем команду
                 SqlCommand command = new SqlCommand(query, database.GetConnection());
 
@@ -47,22 +45,20 @@ namespace TransportCompany.Windows
                 while (reader.Read())
                 {
                     // Читаем ответ
-                    Employees employee = new Employees()
+                    employeesDisplay.Add(new EmployeeDisplay
                     {
-                        EmployeeId = Convert.ToInt64(reader["EmployeeId"]),
-                        StatusId = Convert.ToInt64(reader["StatusId"]),
-                        PostId = Convert.ToInt64(reader["PostId"]),
-                        FirstName = Convert.ToString(reader["FirstName"]),
-                        LastName = Convert.ToString(reader["LastName"]),
-                        MiddleName = Convert.ToString(reader["MiddleName"]),
-                        DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]),
-                        Phone = Convert.ToString(reader["Phone"]),
-                        Email = Convert.ToString(reader["Email"]),
-                        Login = Convert.ToString(reader["Login"]),
-                        Password = Convert.ToString(reader["Password"])
-                    };
-                    // Заносим данные в коллекцию
-                    employees.Add(employee);
+                        EmployeeId = (long)reader["EmployeeId"],
+                        FirstName = reader["FirstName"].ToString(),
+                        LastName = reader["LastName"].ToString(),
+                        MiddleName = reader["MiddleName"].ToString(),
+                        PostName = reader["PostName"].ToString(),
+                        Status = reader["Status"].ToString(),
+                        Phone = reader["Phone"].ToString(),
+                        DateOfBirth = (DateTime)reader["DateOfBirth"],
+                        Email = reader["Email"].ToString(),
+                        Login = reader["Login"].ToString(),
+                        Password = reader["Password"].ToString()
+                    });                    
                 }
             }
             catch (Exception ex)
@@ -92,11 +88,11 @@ namespace TransportCompany.Windows
             try
             {
                 // Получаем id удаляемого профиля
-                var selectedEmployee = employees.FirstOrDefault(item => item.EmployeeId == Id);
+                var selectedEmployee = employeesDisplay.FirstOrDefault(item => item.EmployeeId == Id);
                 if (selectedEmployee != null)
                 {
                     // Удаляем из коллекции выбранного сотрудника
-                    employees.Remove(selectedEmployee);
+                    employeesDisplay.Remove(selectedEmployee);
 
                     //Открываем подключение к бд
                     database.OpenConnection();
