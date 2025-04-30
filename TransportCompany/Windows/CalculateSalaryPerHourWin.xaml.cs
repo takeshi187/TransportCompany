@@ -108,7 +108,7 @@ namespace TransportCompany.Windows
                 reader.Close();
 
                 // Вставляем расчет в таблицу выплат
-                string insertquery = "INSERT INTO Salary (EmployeeId, Count, Date, SalaryTypeId) VALUES (@EmployeeId, @Count, GETDATE(), 2)";
+                string insertquery = "INSERT INTO Salary (EmployeeId, Count, Date) VALUES (@EmployeeId, @Count, GETDATE())";
 
                 // Создаем команду
                 SqlCommand insertCommand = new SqlCommand(insertquery, database.GetConnection());

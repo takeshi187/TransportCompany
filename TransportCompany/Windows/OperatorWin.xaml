@@ -22,8 +22,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Background="LightGray">
-            <Button x:Name="Btn_Calculate_Salary_Per_Km" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Content="Рассчет по км" Width="150" Height="50" Margin="5" Click="Btn_Calculate_Salary_Per_Km_Click"/>
-            <Button x:Name="Btn_Calculate_Salary_Per_Hour" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Content="Рассчет по часам" Width="150" Height="50" Margin="5" Click="Btn_Calculate_Salary_Per_Hour_Click"/>
+            <Button x:Name="Btn_Calculate_Salary_Per_Hour" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Content="Рассчет зарплаты" Width="150" Height="50" Margin="5" Click="Btn_Calculate_Salary_Per_Hour_Click"/>
             <Button x:Name="Btn_Exit" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Content="Выход" Width="150" Height="50" Margin="5" Click="Btn_Exit_Click"/>
         </StackPanel>
        
